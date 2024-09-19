@@ -6,24 +6,29 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+// Entity class for the Books table
 @Entity
 @Table(name = "books")
 public class Books {
     
+    // Auto-generate the id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
+    // Rest of the fields
     private String title;
     private String author;
     private Integer year;
-    private Integer rating;
+    private Float rating;
     private boolean ispdf;
 
+    // Default constructor
     private Books() {
     }
 
-    public Books(String title, String author, int year, int rating, boolean ispdf) {
+    // Constructor with all fields
+    public Books(String title, String author, int year, Float rating, boolean ispdf) {
         this.title = title;
         this.author = author;
         this.year = year;
@@ -31,6 +36,7 @@ public class Books {
         this.ispdf = ispdf;
     }
 
+    // ------- Getters --------
     public Integer getId() {
         return id;
     }
@@ -47,7 +53,7 @@ public class Books {
         return year;
     }
 
-    public Integer getRating() {
+    public Float getRating() {
         return rating;
     }
 
