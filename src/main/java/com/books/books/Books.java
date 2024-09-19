@@ -57,7 +57,7 @@ public class Books {
         return rating;
     }
 
-    public boolean isPdf() {
+    public boolean getIspdf() {
         return ispdf;
     }
 

@@ -17,6 +17,11 @@ public class BooksController {
         this.booksRepository = booksRepository;
     }
 
+    @GetMapping("/")
+    public String home() {
+        return "Welcome to the Books API!";
+    }
+
     // Get all books
     @GetMapping("/books")
     public Iterable<Books> getBooks() {
