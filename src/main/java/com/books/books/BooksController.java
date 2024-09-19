@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-
-
-
 @RestController
 public class BooksController {
 
@@ -26,16 +22,16 @@ public class BooksController {
     public Iterable<Books> getBooks() {
         return booksRepository.findAll();
     }
-    
+
     // Upload new book
     @PostMapping("/books")
-    public Books addOneBook(@RequestBody Books book){
+    public Books addOneBook(@RequestBody Books book) {
         return booksRepository.save(book);
     }
-    
+
     // Get book by title
     @GetMapping("/books/title/{title}")
-    public Books getBookByTitle(@PathVariable String title){
+    public Books getBookByTitle(@PathVariable String title) {
         return booksRepository.findByTitle(title);
     }
 
@@ -44,7 +40,7 @@ public class BooksController {
     public Iterable<Books> getBooksByAuthor(@PathVariable String author) {
         return booksRepository.findByAuthor(author);
     }
-    
+
     // Filter books by year
     @GetMapping("/books/year/{year}")
     public Iterable<Books> getBooksByYear(@PathVariable Integer year) {
@@ -66,8 +62,13 @@ public class BooksController {
     // Update book rating
     @PutMapping("/books/{title}/rating")
     public Integer insertNewRating(@PathVariable String title, @RequestParam Integer rating) {
-        float currentRating = booksRepository.findByTitle(title).getRating();
-        float newRating = (currentRating + rating) / 2;
+        float newRating;
+        Float currentRating = booksRepository.findByTitle(title).getRating();
+        if (currentRating != null) {
+            newRating = (currentRating + rating) / 2;
+        } else {
+            newRating = rating;
+        }
         return booksRepository.updateRating(title, newRating);
     }
 }
