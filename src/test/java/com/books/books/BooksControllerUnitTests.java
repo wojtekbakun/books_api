@@ -26,7 +26,7 @@ import org.springframework.http.MediaType;
 
 // Automatically configure the MockMvc to test the BooksController class
 @AutoConfigureMockMvc
-class BooksControllerTests {
+class BooksControllerUnitTests {
 
     // Inject the MockMvc instance
     @Autowired
