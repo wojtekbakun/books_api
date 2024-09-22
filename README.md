@@ -44,7 +44,7 @@ To run this application, ensure that you have the following tools installed:
 
 1. **Clone the Repository**:
     ```bash
-    git clone https...
+    git clone https://github.com/wojtekbakun/books_api
     cd books
     ```
 
@@ -94,3 +94,9 @@ To run this application, ensure that you have the following tools installed:
 ### Sample Mock Data
 
 Mock data for books is currently populated in database.
+
+## Running Tests
+
+Run the tests using Maven:
+```bash
+./mvnw test
